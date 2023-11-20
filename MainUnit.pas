@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Menus, FMX.StdCtrls, FMX.Layouts, FMX.ExtCtrls,
-  FMX.Controls.Presentation, FMX.TabControl;
+  FMX.Controls.Presentation, FMX.TabControl, FMX.Colors, FMX.ListBox;
 
 type
   TForm1 = class(TForm)
@@ -17,13 +17,17 @@ type
     mmiQuit: TMenuItem;
     txtFileName: TLabel;
     lblFileName: TLabel;
-    Label1: TLabel;
+    txtImageSize: TLabel;
     lblImageSize: TLabel;
     tabcImages: TTabControl;
     tabiResult: TTabItem;
     tabiOriginal: TTabItem;
     imgvOriginal: TImageViewer;
     imgvFinal: TImageViewer;
+    ComboBox1: TComboBox;
+    txtBackgroundType: TLabel;
+    ComboColorBox1: TComboColorBox;
+    txtBackgroundColor: TLabel;
     procedure mmiLoadClick(Sender: TObject);
   private
     { Private declarations }

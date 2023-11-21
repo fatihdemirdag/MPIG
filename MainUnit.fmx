@@ -7,6 +7,7 @@ object Form1: TForm1
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object txtFileName: TLabel
     StyledSettings = [Family, Size, FontColor]
@@ -18,7 +19,7 @@ object Form1: TForm1
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
     Text = 'File Name: '
-    TabOrder = 5
+    TabOrder = 6
   end
   object lblFileName: TLabel
     Position.X = 88.000000000000000000
@@ -28,7 +29,7 @@ object Form1: TForm1
     Size.PlatformDefault = False
     TextSettings.Trimming = None
     Text = '...'
-    TabOrder = 7
+    TabOrder = 8
   end
   object txtImageSize: TLabel
     StyledSettings = [Family, Size, FontColor]
@@ -40,7 +41,7 @@ object Form1: TForm1
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
     Text = 'Image Size:'
-    TabOrder = 4
+    TabOrder = 5
   end
   object lblImageSize: TLabel
     Position.X = 88.000000000000000000
@@ -50,7 +51,7 @@ object Form1: TForm1
     Size.PlatformDefault = False
     TextSettings.Trimming = None
     Text = '...'
-    TabOrder = 6
+    TabOrder = 7
   end
   object tabcImages: TTabControl
     Align = Top
@@ -58,7 +59,7 @@ object Form1: TForm1
     Size.Height = 400.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 1
-    TabOrder = 8
+    TabOrder = 9
     TabPosition = PlatformDefault
     Sizes = (
       400s
@@ -101,7 +102,7 @@ object Form1: TForm1
         end>
       TextSettings.Trimming = None
       IsSelected = True
-      Size.Width = 98.000000000000000000
+      Size.Width = 99.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -133,6 +134,82 @@ object Form1: TForm1
     Left = 24
     Top = 72
   end
+  object cbxBackgroundType: TComboBox
+    Items.Strings = (
+      'Rectangle'
+      'Slightly Rounded'
+      'Rounded'
+      'Circular'
+      'Squircle')
+    ItemIndex = 0
+    Position.X = 128.000000000000000000
+    Position.Y = 456.000000000000000000
+    Size.Width = 128.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    OnChange = cbxBackgroundTypeChange
+  end
+  object txtBackgroundType: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 458.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'Background Type:'
+    TabOrder = 4
+  end
+  object clrbBackgroundColor: TComboColorBox
+    Color = claWhite
+    Position.X = 128.000000000000000000
+    Position.Y = 478.000000000000000000
+    Size.Width = 128.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    OnChange = clrbBackgroundColorChange
+  end
+  object txtBackgroundColor: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 483.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'Background Color:'
+    TabOrder = 3
+  end
+  object txtScale: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 508.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'Scale:'
+    TabOrder = 2
+  end
+  object spnScale: TSpinBox
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 16
+    Cursor = crIBeam
+    Min = 5.000000000000000000
+    Max = 800.000000000000000000
+    Value = 100.000000000000000000
+    Position.X = 128.000000000000000000
+    Position.Y = 503.000000000000000000
+    Size.Width = 128.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnChange = spnScaleChange
+  end
   object MainMenu1: TMainMenu
     Left = 24
     Top = 16
@@ -156,53 +233,5 @@ object Form1: TForm1
         Text = 'Quit'
       end
     end
-  end
-  object ComboBox1: TComboBox
-    Items.Strings = (
-      'Rectangle'
-      'Slightly Rounded'
-      'Rounded'
-      'Circular'
-      'Squircle')
-    ItemIndex = 0
-    Position.X = 128.000000000000000000
-    Position.Y = 458.000000000000000000
-    Size.Width = 128.000000000000000000
-    Size.Height = 22.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 12
-  end
-  object txtBackgroundType: TLabel
-    StyledSettings = [Family, Size, FontColor]
-    Position.X = 8.000000000000000000
-    Position.Y = 463.000000000000000000
-    Size.Width = 112.000000000000000000
-    Size.Height = 17.000000000000000000
-    Size.PlatformDefault = False
-    TextSettings.Font.StyleExt = {00070000000000000004000000}
-    TextSettings.Trimming = None
-    Text = 'Background Type:'
-    TabOrder = 3
-  end
-  object ComboColorBox1: TComboColorBox
-    Color = claWhite
-    Position.X = 128.000000000000000000
-    Position.Y = 488.000000000000000000
-    Size.Width = 128.000000000000000000
-    Size.Height = 22.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 13
-  end
-  object txtBackgroundColor: TLabel
-    StyledSettings = [Family, Size, FontColor]
-    Position.X = 8.000000000000000000
-    Position.Y = 488.000000000000000000
-    Size.Width = 112.000000000000000000
-    Size.Height = 17.000000000000000000
-    Size.PlatformDefault = False
-    TextSettings.Font.StyleExt = {00070000000000000004000000}
-    TextSettings.Trimming = None
-    Text = 'Background Color:'
-    TabOrder = 2
   end
 end

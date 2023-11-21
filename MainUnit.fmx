@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Playture Multi-Platform Icon Generator'
-  ClientHeight = 640
+  ClientHeight = 620
   ClientWidth = 400
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -12,66 +12,66 @@ object Form1: TForm1
   object txtFileName: TLabel
     StyledSettings = [Family, Size, FontColor]
     Position.X = 8.000000000000000000
-    Position.Y = 408.000000000000000000
+    Position.Y = 434.000000000000000000
     Size.Width = 72.000000000000000000
-    Size.Height = 17.000000000000000000
+    Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
     Text = 'File Name: '
-    TabOrder = 6
+    TabOrder = 7
   end
   object lblFileName: TLabel
     Position.X = 88.000000000000000000
-    Position.Y = 408.000000000000000000
+    Position.Y = 434.000000000000000000
     Size.Width = 304.000000000000000000
-    Size.Height = 17.000000000000000000
+    Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Trimming = None
     Text = '...'
-    TabOrder = 8
+    TabOrder = 9
   end
   object txtImageSize: TLabel
     StyledSettings = [Family, Size, FontColor]
     Position.X = 8.000000000000000000
-    Position.Y = 433.000000000000000000
+    Position.Y = 460.000000000000000000
     Size.Width = 72.000000000000000000
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
     Text = 'Image Size:'
-    TabOrder = 5
+    TabOrder = 6
   end
   object lblImageSize: TLabel
     Position.X = 88.000000000000000000
-    Position.Y = 433.000000000000000000
+    Position.Y = 460.000000000000000000
     Size.Width = 304.000000000000000000
-    Size.Height = 17.000000000000000000
+    Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Trimming = None
     Text = '...'
-    TabOrder = 7
+    TabOrder = 8
   end
   object tabcImages: TTabControl
     Align = Top
     Size.Width = 400.000000000000000000
-    Size.Height = 400.000000000000000000
+    Size.Height = 426.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 1
-    TabOrder = 9
+    TabIndex = 0
+    TabOrder = 10
     TabPosition = PlatformDefault
     Sizes = (
       400s
-      374s
       400s
-      374s)
+      400s
+      400s)
     object tabiResult: TTabItem
       CustomIcon = <
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 86.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -87,13 +87,14 @@ object Form1: TForm1
         Margins.Right = 8.000000000000000000
         Margins.Bottom = 8.000000000000000000
         Size.Width = 384.000000000000000000
-        Size.Height = 358.000000000000000000
+        Size.Height = 384.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
         BackgroundFill.Kind = None
         MouseScaling = False
+        ShowScrollBars = False
         Viewport.Width = 380.000000000000000000
-        Viewport.Height = 354.000000000000000000
+        Viewport.Height = 380.000000000000000000
       end
     end
     object tabiOriginal: TTabItem
@@ -101,8 +102,8 @@ object Form1: TForm1
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
-      Size.Width = 99.000000000000000000
+      IsSelected = False
+      Size.Width = 98.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -117,13 +118,13 @@ object Form1: TForm1
         Margins.Right = 8.000000000000000000
         Margins.Bottom = 8.000000000000000000
         Size.Width = 384.000000000000000000
-        Size.Height = 358.000000000000000000
+        Size.Height = 384.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
         BackgroundFill.Kind = None
         MouseScaling = False
         Viewport.Width = 380.000000000000000000
-        Viewport.Height = 354.000000000000000000
+        Viewport.Height = 380.000000000000000000
       end
     end
   end
@@ -139,73 +140,73 @@ object Form1: TForm1
       'Rectangle'
       'Slightly Rounded'
       'Rounded'
-      'Circular'
-      'Squircle')
+      'Circular')
     ItemIndex = 0
+    ItemWidth = 120.000000000000000000
     Position.X = 128.000000000000000000
-    Position.Y = 456.000000000000000000
-    Size.Width = 128.000000000000000000
+    Position.Y = 484.000000000000000000
+    Size.Width = 264.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 13
+    TabOrder = 14
     OnChange = cbxBackgroundTypeChange
   end
   object txtBackgroundType: TLabel
     StyledSettings = [Family, Size, FontColor]
     Position.X = 8.000000000000000000
-    Position.Y = 458.000000000000000000
+    Position.Y = 486.000000000000000000
     Size.Width = 112.000000000000000000
-    Size.Height = 17.000000000000000000
+    Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
     Text = 'Background Type:'
-    TabOrder = 4
+    TabOrder = 5
   end
   object clrbBackgroundColor: TComboColorBox
     Color = claWhite
     Position.X = 128.000000000000000000
-    Position.Y = 478.000000000000000000
-    Size.Width = 128.000000000000000000
+    Position.Y = 512.000000000000000000
+    Size.Width = 264.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 14
+    TabOrder = 15
     OnChange = clrbBackgroundColorChange
   end
   object txtBackgroundColor: TLabel
     StyledSettings = [Family, Size, FontColor]
     Position.X = 8.000000000000000000
-    Position.Y = 483.000000000000000000
+    Position.Y = 512.000000000000000000
     Size.Width = 112.000000000000000000
-    Size.Height = 17.000000000000000000
+    Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
     Text = 'Background Color:'
-    TabOrder = 3
+    TabOrder = 4
   end
   object txtScale: TLabel
     StyledSettings = [Family, Size, FontColor]
     Position.X = 8.000000000000000000
-    Position.Y = 508.000000000000000000
+    Position.Y = 538.000000000000000000
     Size.Width = 112.000000000000000000
-    Size.Height = 17.000000000000000000
+    Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.Trimming = None
     Text = 'Scale:'
-    TabOrder = 2
+    TabOrder = 3
   end
   object spnScale: TSpinBox
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 16
+    TabOrder = 17
     Cursor = crIBeam
     Min = 5.000000000000000000
     Max = 800.000000000000000000
     Value = 100.000000000000000000
     Position.X = 128.000000000000000000
-    Position.Y = 503.000000000000000000
-    Size.Width = 128.000000000000000000
+    Position.Y = 538.000000000000000000
+    Size.Width = 264.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
     OnChange = spnScaleChange
@@ -223,6 +224,7 @@ object Form1: TForm1
       object mmiExport: TMenuItem
         Locked = True
         Text = 'Export'
+        OnClick = mmiExportClick
       end
       object TMenuItem
         Locked = True
@@ -231,7 +233,33 @@ object Form1: TForm1
       object mmiQuit: TMenuItem
         Locked = True
         Text = 'Quit'
+        OnClick = mmiQuitClick
       end
     end
+  end
+  object ProgressBar1: TProgressBar
+    Max = 31.000000000000000000
+    Orientation = Horizontal
+    Position.X = 128.000000000000000000
+    Position.Y = 572.000000000000000000
+    Size.Width = 264.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object txtProgress: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 572.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'Progress:'
+    TabOrder = 2
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 24
+    Top = 130
   end
 end

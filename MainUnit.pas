@@ -49,6 +49,7 @@ type
 
   private
     procedure UpdateImage;
+    function ScaleIconDown(bmp: TBitmap; size: integer): TBitmap;
     procedure ExportIconWithSize(bmp: TBitmap; size: integer; fileName: string);
 
   public
@@ -86,11 +87,11 @@ var
   tmp: TBitmap;
 begin
   tmp := TBitmap.Create(size, size);
-
   tmp.Canvas.BeginScene();
   tmp.Canvas.DrawBitmap(bmp, bmp.BoundsF, tmp.BoundsF, 1.0, false);
   tmp.Canvas.EndScene;
   tmp.SaveToFile(fileName);
+  tmp.Free;
 
   ProgressBar1.Value := ProgressBar1.Value + 1.0;
 end;
@@ -108,6 +109,7 @@ end;
 procedure TForm1.mmiExportClick(Sender: TObject);
 var
   path: string;
+  img768, img512, img384, img256, img192, img128, img96, img64, img48, img32: TBitmap;
 begin
   if SaveDialog1.Execute then
   begin
@@ -118,38 +120,49 @@ begin
     System.IOUtils.TDirectory.CreateDirectory(path + '\ios\iphone\');
     System.IOUtils.TDirectory.CreateDirectory(path + '\ios\ipad\');
 
+    img768 := ScaleIconDown(imgvFinal.Bitmap, 768);
+    img512 := ScaleIconDown(img768, 512);
+    img384 := ScaleIconDown(img512, 384);
+    img256 := ScaleIconDown(img384, 256);
+    img192 := ScaleIconDown(img256, 192);
+    img128 := ScaleIconDown(img192, 128);
+    img96 := ScaleIconDown(img128, 96);
+    img64 := ScaleIconDown(img96, 64);
+    img48 := ScaleIconDown(img64, 48);
+    img32 := ScaleIconDown(img48, 32);
+
     ProgressBar1.Value := 0;
-    ExportIconWithSize(imgvFinal.Bitmap, 36, path + '\android\launcher_36_ldpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 48, path + '\android\launcher_48_mdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 72, path + '\android\launcher_72_hdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 96, path + '\android\launcher_96_xhdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 144, path + '\android\launcher_144_xxhdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 192, path + '\android\launcher_192_xxxhdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 24, path + '\android\notification_24_mdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 36, path + '\android\notification_36_hdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 48, path + '\android\notification_48_xhdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 72, path + '\android\notification_72_xxhdpi.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 96, path + '\android\notification_96_xxxhdpi.png');
+    ExportIconWithSize(img48, 36, path + '\android\launcher_36_ldpi.png');
+    ExportIconWithSize(img48, 48, path + '\android\launcher_48_mdpi.png');
+    ExportIconWithSize(img96, 72, path + '\android\launcher_72_hdpi.png');
+    ExportIconWithSize(img96, 96, path + '\android\launcher_96_xhdpi.png');
+    ExportIconWithSize(img192, 144, path + '\android\launcher_144_xxhdpi.png');
+    ExportIconWithSize(img192, 192, path + '\android\launcher_192_xxxhdpi.png');
+    ExportIconWithSize(img32, 24, path + '\android\notification_24_mdpi.png');
+    ExportIconWithSize(img48, 36, path + '\android\notification_36_hdpi.png');
+    ExportIconWithSize(img48, 48, path + '\android\notification_48_xhdpi.png');
+    ExportIconWithSize(img96, 72, path + '\android\notification_72_xxhdpi.png');
+    ExportIconWithSize(img96, 96, path + '\android\notification_96_xxxhdpi.png');
 
-    ExportIconWithSize(imgvFinal.Bitmap, 120, path + '\ios\iphone\ApplicationIcon_120.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 180, path + '\ios\iphone\ApplicationIcon_180.png');
+    ExportIconWithSize(img128, 120, path + '\ios\iphone\ApplicationIcon_120.png');
+    ExportIconWithSize(img192, 180, path + '\ios\iphone\ApplicationIcon_180.png');
     ExportIconWithSize(imgvFinal.Bitmap, 1024, path + '\ios\iphone\ApplicationIcon_1024.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 80, path + '\ios\iphone\SpotlightSearchIcon_80.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 120, path + '\ios\iphone\SpotlightSearchIcon_120.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 58, path + '\ios\iphone\SettingIcon_58.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 87, path + '\ios\iphone\SettingIcon_87.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 40, path + '\ios\iphone\NotificationIcon_40.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 60, path + '\ios\iphone\NotificationIcon_60.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 459, path + '\ios\iphone\LaunchImage_2x.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 688, path + '\ios\iphone\LaunchImage_3x.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 459, path + '\ios\iphone\LaunchImage_2x_dark.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 688, path + '\ios\iphone\LaunchImage_3x_dark.png');
+    ExportIconWithSize(img96, 80, path + '\ios\iphone\SpotlightSearchIcon_80.png');
+    ExportIconWithSize(img128, 120, path + '\ios\iphone\SpotlightSearchIcon_120.png');
+    ExportIconWithSize(img64, 58, path + '\ios\iphone\SettingIcon_58.png');
+    ExportIconWithSize(img96, 87, path + '\ios\iphone\SettingIcon_87.png');
+    ExportIconWithSize(img48, 40, path + '\ios\iphone\NotificationIcon_40.png');
+    ExportIconWithSize(img64, 60, path + '\ios\iphone\NotificationIcon_60.png');
+    ExportIconWithSize(img512, 459, path + '\ios\iphone\LaunchImage_2x.png');
+    ExportIconWithSize(img768, 688, path + '\ios\iphone\LaunchImage_3x.png');
+    ExportIconWithSize(img512, 459, path + '\ios\iphone\LaunchImage_2x_dark.png');
+    ExportIconWithSize(img768, 688, path + '\ios\iphone\LaunchImage_3x_dark.png');
 
-    ExportIconWithSize(imgvFinal.Bitmap, 152, path + '\ios\ipad\ApplicationIcon_152.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 167, path + '\ios\ipad\ApplicationIcon_167.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 80, path + '\ios\ipad\SpotlightSearchIcon_80.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 58, path + '\ios\ipad\SettingIcon_58.png');
-    ExportIconWithSize(imgvFinal.Bitmap, 40, path + '\ios\iphone\NotificationIcon_40.png');
+    ExportIconWithSize(img192, 152, path + '\ios\ipad\ApplicationIcon_152.png');
+    ExportIconWithSize(img192, 167, path + '\ios\ipad\ApplicationIcon_167.png');
+    ExportIconWithSize(img96, 80, path + '\ios\ipad\SpotlightSearchIcon_80.png');
+    ExportIconWithSize(img64, 58, path + '\ios\ipad\SettingIcon_58.png');
+    ExportIconWithSize(img48, 40, path + '\ios\iphone\NotificationIcon_40.png');
     ExportIconWithSize(imgvFinal.Bitmap, 965, path + '\ios\iphone\LaunchImage.png');
     ExportIconWithSize(imgvFinal.Bitmap, 965, path + '\ios\iphone\LaunchImage_dark.png');
   end;
@@ -178,6 +191,14 @@ begin
 end;
 
 
+
+function TForm1.ScaleIconDown(bmp: TBitmap; size: integer): TBitmap;
+begin
+  result := TBitmap.Create(size, size);
+  result.Canvas.BeginScene();
+  result.Canvas.DrawBitmap(bmp, bmp.BoundsF, result.BoundsF, 1.0, false);
+  result.Canvas.EndScene;
+end;
 
 procedure TForm1.spnScaleChange(Sender: TObject);
 begin

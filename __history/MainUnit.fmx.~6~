@@ -1,0 +1,208 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Playture Multi-Platform Icon Generator'
+  ClientHeight = 640
+  ClientWidth = 400
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object txtFileName: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 408.000000000000000000
+    Size.Width = 72.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'File Name: '
+    TabOrder = 5
+  end
+  object lblFileName: TLabel
+    Position.X = 88.000000000000000000
+    Position.Y = 408.000000000000000000
+    Size.Width = 304.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Trimming = None
+    Text = '...'
+    TabOrder = 7
+  end
+  object txtImageSize: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 433.000000000000000000
+    Size.Width = 72.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'Image Size:'
+    TabOrder = 4
+  end
+  object lblImageSize: TLabel
+    Position.X = 88.000000000000000000
+    Position.Y = 433.000000000000000000
+    Size.Width = 304.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Trimming = None
+    Text = '...'
+    TabOrder = 6
+  end
+  object tabcImages: TTabControl
+    Align = Top
+    Size.Width = 400.000000000000000000
+    Size.Height = 400.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 1
+    TabOrder = 8
+    TabPosition = PlatformDefault
+    Sizes = (
+      400s
+      374s
+      400s
+      374s)
+    object tabiResult: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = False
+      Size.Width = 86.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Final Output'
+      ExplicitSize.cx = 86.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object imgvFinal: TImageViewer
+        Align = Client
+        Margins.Left = 8.000000000000000000
+        Margins.Top = 8.000000000000000000
+        Margins.Right = 8.000000000000000000
+        Margins.Bottom = 8.000000000000000000
+        Size.Width = 384.000000000000000000
+        Size.Height = 358.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        BackgroundFill.Kind = None
+        MouseScaling = False
+        Viewport.Width = 380.000000000000000000
+        Viewport.Height = 354.000000000000000000
+      end
+    end
+    object tabiOriginal: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Trimming = None
+      IsSelected = True
+      Size.Width = 98.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Original Image'
+      ExplicitSize.cx = 99.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object imgvOriginal: TImageViewer
+        Align = Client
+        Margins.Left = 8.000000000000000000
+        Margins.Top = 8.000000000000000000
+        Margins.Right = 8.000000000000000000
+        Margins.Bottom = 8.000000000000000000
+        Size.Width = 384.000000000000000000
+        Size.Height = 358.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        BackgroundFill.Kind = None
+        MouseScaling = False
+        Viewport.Width = 380.000000000000000000
+        Viewport.Height = 354.000000000000000000
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    FileName = 'X:\Projects\ColorPop2\data\icons\game_icon07.png'
+    Filter = 'Portable Network Graphics|*.png'
+    Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofEnableSizing]
+    Left = 24
+    Top = 72
+  end
+  object MainMenu1: TMainMenu
+    Left = 24
+    Top = 16
+    object mmiFile: TMenuItem
+      Text = 'File'
+      object mmiLoad: TMenuItem
+        Locked = True
+        Text = 'Load'
+        OnClick = mmiLoadClick
+      end
+      object mmiExport: TMenuItem
+        Locked = True
+        Text = 'Export'
+      end
+      object TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object mmiQuit: TMenuItem
+        Locked = True
+        Text = 'Quit'
+      end
+    end
+  end
+  object ComboBox1: TComboBox
+    Items.Strings = (
+      'Rectangle'
+      'Slightly Rounded'
+      'Rounded'
+      'Circular'
+      'Squircle')
+    ItemIndex = 0
+    Position.X = 128.000000000000000000
+    Position.Y = 458.000000000000000000
+    Size.Width = 128.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+  end
+  object txtBackgroundType: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 463.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'Background Type:'
+    TabOrder = 3
+  end
+  object ComboColorBox1: TComboColorBox
+    Color = claWhite
+    Position.X = 128.000000000000000000
+    Position.Y = 488.000000000000000000
+    Size.Width = 128.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+  end
+  object txtBackgroundColor: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 488.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.Trimming = None
+    Text = 'Background Color:'
+    TabOrder = 2
+  end
+end

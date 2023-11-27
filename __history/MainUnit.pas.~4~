@@ -1,0 +1,53 @@
+unit MainUnit;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Menus, FMX.StdCtrls, FMX.Layouts, FMX.ExtCtrls,
+  FMX.Controls.Presentation, FMX.TabControl;
+
+type
+  TForm1 = class(TForm)
+    OpenDialog1: TOpenDialog;
+    MainMenu1: TMainMenu;
+    mmiFile: TMenuItem;
+    mmiLoad: TMenuItem;
+    mmiExport: TMenuItem;
+    mmiQuit: TMenuItem;
+    txtFileName: TLabel;
+    lblFileName: TLabel;
+    Label1: TLabel;
+    lblImageSize: TLabel;
+    tabcImages: TTabControl;
+    tabiResult: TTabItem;
+    tabiOriginal: TTabItem;
+    imgvOriginal: TImageViewer;
+    imgvFinal: TImageViewer;
+    procedure mmiLoadClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.fmx}
+
+procedure TForm1.mmiLoadClick(Sender: TObject);
+begin
+  if OpenDialog1.Execute then
+  begin
+    imgvOriginal.Bitmap.LoadFromFile(OpenDialog1.FileName);
+    imgvOriginal.BestFit;
+
+    lblFileName.Text := OpenDialog1.FileName;
+    lblImageSize.Text := IntToStr(imgvOriginal.Bitmap.Width) + ' x ' + IntToStr(imgvLoaded.Bitmap.Height);
+  end;
+end;
+
+end.

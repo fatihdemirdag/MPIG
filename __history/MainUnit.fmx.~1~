@@ -1,0 +1,52 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Playture Multi-Platform Icon Generator'
+  ClientHeight = 640
+  ClientWidth = 400
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object imgvLoaded: TImageViewer
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 384.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 380.000000000000000000
+    Viewport.Height = 380.000000000000000000
+  end
+  object OpenDialog1: TOpenDialog
+    FileName = 'X:\Projects\ColorPop2\data\icons\game_icon07.png'
+    Filter = 'Portable Network Graphics|*.png'
+    Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofEnableSizing]
+    Left = 24
+    Top = 72
+  end
+  object MainMenu1: TMainMenu
+    Left = 24
+    Top = 16
+    object mmiFile: TMenuItem
+      Text = 'mmiFile'
+      object mmiLoad: TMenuItem
+        Locked = True
+        Text = 'Load'
+        OnClick = mmiLoadClick
+      end
+      object mmiExport: TMenuItem
+        Locked = True
+        Text = 'Export'
+      end
+      object TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object mmiQuit: TMenuItem
+        Locked = True
+        Text = 'Quit'
+      end
+    end
+  end
+end

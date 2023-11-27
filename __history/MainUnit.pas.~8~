@@ -1,0 +1,119 @@
+unit MainUnit;
+
+
+interface
+
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Menus,
+  FMX.StdCtrls, FMX.Layouts, FMX.ExtCtrls,
+  FMX.Controls.Presentation, FMX.TabControl, FMX.Colors, FMX.ListBox, FMX.Edit,
+  FMX.EditBox, FMX.SpinBox;
+
+
+
+type
+  TForm1 = class(TForm)
+    OpenDialog1: TOpenDialog;
+    txtFileName: TLabel;
+    lblFileName: TLabel;
+    txtImageSize: TLabel;
+    lblImageSize: TLabel;
+    tabcImages: TTabControl;
+    tabiResult: TTabItem;
+    tabiOriginal: TTabItem;
+    imgvOriginal: TImageViewer;
+    imgvFinal: TImageViewer;
+    cbxBackgroundType: TComboBox;
+    txtBackgroundType: TLabel;
+    clrbBackgroundColor: TComboColorBox;
+    txtBackgroundColor: TLabel;
+    txtScale: TLabel;
+    spnScale: TSpinBox;
+    MainMenu1: TMainMenu;
+    mmiFile: TMenuItem;
+    mmiLoad: TMenuItem;
+    mmiExport: TMenuItem;
+    mmiQuit: TMenuItem;
+    procedure mmiLoadClick(Sender: TObject);
+    procedure spnScaleChange(Sender: TObject);
+    procedure clrbBackgroundColorChange(Sender: TObject);
+    procedure cbxBackgroundTypeChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    procedure UpdateImage;
+  public
+    { Public declarations }
+  end;
+
+
+var
+  Form1: TForm1;
+
+
+implementation
+
+
+{$R *.fmx}
+
+
+
+procedure TForm1.cbxBackgroundTypeChange(Sender: TObject);
+begin
+  UpdateImage;
+end;
+
+
+
+procedure TForm1.clrbBackgroundColorChange(Sender: TObject);
+begin
+  UpdateImage;
+end;
+
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  imgvFinal.Bitmap := TBitmap.Create(1024, 1024);
+  imgvFinal.BestFit;
+end;
+
+
+
+procedure TForm1.mmiLoadClick(Sender: TObject);
+begin
+  if OpenDialog1.Execute then
+  begin
+    imgvOriginal.Bitmap.LoadFromFile(OpenDialog1.FileName);
+    imgvOriginal.BestFit;
+    imgvOriginal.BackgroundFill := TBrush.Create(TBrushKind.None, $00000000);
+
+    lblFileName.Text  := OpenDialog1.FileName;
+    lblImageSize.Text := IntToStr(imgvOriginal.Bitmap.Width) + ' x ' +
+      IntToStr(imgvOriginal.Bitmap.Height);
+  end;
+end;
+
+
+
+procedure TForm1.spnScaleChange(Sender: TObject);
+begin
+  UpdateImage;
+end;
+
+
+
+procedure TForm1.UpdateImage;
+begin
+  imgvFinal.Bitmap.Canvas.Clear($00000000);
+
+  if cbxBackgroundType.ItemIndex = 0 then
+  begin
+    imgvFinal.Bitmap.Canvas.DrawRect(imgvFinal.ClipRect, 1.0, TStrokeBrush.Create(TBrushKind.None, $FFFFFFFF));
+  end;
+end;
+
+
+end.
